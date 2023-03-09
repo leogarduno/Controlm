@@ -1,0 +1,7 @@
+---
+- hosts: ansible
+  tasks:
+  - name: Detiene Agent
+    command: /cmagent/ctm/scripts/shut-ag -u ctmagent -p ALL
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
