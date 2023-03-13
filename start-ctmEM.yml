@@ -2,6 +2,6 @@
 - hosts: ctm9021l
   tasks:
   - name: inicia EM Server
-    command: /usr/bin/su - emuser -c "start_all -U emuser -P AppDemo2023"
+    command: /usr/bin/su - cmemuser -c "start_all -U emuser -P Demo2023"
     register: result_valid
   - debug: var=result_valid.stdout_lines
