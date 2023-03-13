@@ -1,16 +1,16 @@
 ---
-- hosts: ntdemoctrm
+- hosts: CTM9021L
   tasks:
   - name: inicia DB CTM Server
-    command: /usr/bin/su - ctmuser -c startdb
+    command: /usr/bin/su - cmctmuser -c startdb
     register: result_valid
   - debug: var=result_valid.stdout_lines
   - name: inicia CTM Server
-    command: /usr/bin/su - ctmuser -c start_ctm
+    command: /usr/bin/su - cmctmuser -c start_ctm
     register: result_valid
   - debug: var=result_valid.stdout_lines
   - name: inicia CTM CA
-    command: /usr/bin/su - ctmuser -c start_ca
+    command: /usr/bin/su - cmctmuser -c start_ca
     register: result_valid
   - debug: var=result_valid.stdout_lines
   - name: Tiempo de espera para Agent
@@ -18,6 +18,6 @@
     register: result_valid
   - debug: var=result_valid.stdout_lines
   - name: inicia Agent
-    command: /ctmserve/ctm_agent/ctm/scripts/start-ag -u ctmuser -p ALL
+    command: /ctmsrver/ctm_agent/ctm/scripts/start-ag -u cmctmuser -p ALL
     register: result_valid
   - debug: var=result_valid.stdout_lines
