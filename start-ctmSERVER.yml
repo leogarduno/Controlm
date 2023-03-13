@@ -1,0 +1,23 @@
+---
+- hosts: ntdemoctrm
+  tasks:
+  - name: inicia DB CTM Server
+    command: /usr/bin/su - ctmuser -c startdb
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
+  - name: inicia CTM Server
+    command: /usr/bin/su - ctmuser -c start_ctm
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
+  - name: inicia CTM CA
+    command: /usr/bin/su - ctmuser -c start_ca
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
+  - name: Tiempo de espera para Agent
+    command: sleep 300
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
+  - name: inicia Agent
+    command: /ctmserve/ctm_agent/ctm/scripts/start-ag -u ctmuser -p ALL
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
