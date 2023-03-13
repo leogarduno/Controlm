@@ -1,5 +1,5 @@
 ---
-- hosts: ntdemoctrm
+- hosts: ctm9021l
   tasks:
   - name: inicia EM Server
     command: /usr/bin/su - emuser -c "start_all -U emuser -P AppDemo2023"
