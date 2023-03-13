@@ -1,0 +1,26 @@
+- hosts: ctm9021l
+  tasks:
+  - name: inicia EM Server
+    command: /usr/bin/su - cmemuser -c "start_all -U emuser -P Demo2023"
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
+  - name: inicia DB CTM Server
+    command: /usr/bin/su - cmctmuser -c startdb
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
+  - name: inicia CTM Server
+    command: /usr/bin/su - cmctmuser -c start_ctm
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
+  - name: inicia CTM CA
+    command: /usr/bin/su - cmctmuser -c start_ca
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
+  - name: Tiempo de espera para Agent
+    command: sleep 300
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
+  - name: inicia Agent
+    command: /ctmsrver/ctm_agent/ctm/scripts/start-ag -u cmctmuser -p ALL
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
