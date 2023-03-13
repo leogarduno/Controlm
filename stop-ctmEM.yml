@@ -1,11 +1,11 @@
 ---
-- hosts: ntdemoctrm
+- hosts: ctm9021l
   tasks:
   - name: Detiene Config Agent EM
-    command: /usr/bin/su emuser -c "em ctl -mcs -C Config_Agent -M ntdemoctrm.n.technology -cmd shutdown"
+    command: /usr/bin/su cmemuser -c "em ctl -mcs -C Config_Agent -M ctm9021l -cmd shutdown"
     register: result_valid
   - debug: var=result_valid.stdout_lines
   - name: Detiene EM Server
-    command: /usr/bin/su emuser -c "stop_server -U emuser -P AppDemo2023" 
+    command: /usr/bin/su cmemuser -c "stop_server -U emuser -P Demo2023" 
     register: result_valid
   - debug: var=result_valid.stdout_lines
