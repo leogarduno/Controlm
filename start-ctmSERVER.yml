@@ -1,5 +1,5 @@
 ---
-- hosts: CTM9021L
+- hosts: ctm9021l
   tasks:
   - name: inicia DB CTM Server
     command: /usr/bin/su - cmctmuser -c startdb
