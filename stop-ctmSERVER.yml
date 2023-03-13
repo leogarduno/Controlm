@@ -1,0 +1,19 @@
+---
+- hosts: ntdemoctrm
+  tasks:
+  - name: Detiene CTM Server
+    command: /usr/bin/su - ctmuser -c shut_ctm
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
+  - name: Detiene CTM CA
+    command: /usr/bin/su - ctmuser -c shut_ca
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
+  - name: Detiene DB CTM Server
+    command: /usr/bin/su - ctmuser -c shutdb
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
+  - name: Detiene Agent
+    command: /ctmserve/ctm_agent/ctm/scripts/shut-ag -u ctmuser -p ALL
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
