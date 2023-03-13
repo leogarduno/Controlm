@@ -1,0 +1,11 @@
+---
+- hosts: ntdemoctrm
+  tasks:
+  - name: Detiene Config Agent EM
+    command: /usr/bin/su emuser -c "em ctl -mcs -C Config_Agent -M ntdemoctrm.n.technology -cmd shutdown"
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
+  - name: Detiene EM Server
+    command: /usr/bin/su emuser -c "stop_server -U emuser -P AppDemo2023" 
+    register: result_valid
+  - debug: var=result_valid.stdout_lines
