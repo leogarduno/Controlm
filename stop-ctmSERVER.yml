@@ -1,19 +1,19 @@
 ---
-- hosts: ntdemoctrm
+- hosts: ctm9021l
   tasks:
   - name: Detiene CTM Server
-    command: /usr/bin/su - ctmuser -c shut_ctm
+    command: /usr/bin/su - cmctmuser -c shut_ctm
     register: result_valid
   - debug: var=result_valid.stdout_lines
   - name: Detiene CTM CA
-    command: /usr/bin/su - ctmuser -c shut_ca
+    command: /usr/bin/su - cmctmuser -c shut_ca
     register: result_valid
   - debug: var=result_valid.stdout_lines
   - name: Detiene DB CTM Server
-    command: /usr/bin/su - ctmuser -c shutdb
+    command: /usr/bin/su - cmctmuser -c shutdb
     register: result_valid
   - debug: var=result_valid.stdout_lines
   - name: Detiene Agent
-    command: /ctmserve/ctm_agent/ctm/scripts/shut-ag -u ctmuser -p ALL
+    command: /ctmserve/ctm_agent/ctm/scripts/shut-ag -u cmctmuser -p ALL
     register: result_valid
   - debug: var=result_valid.stdout_lines
